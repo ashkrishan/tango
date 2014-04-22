@@ -1,10 +1,11 @@
-#from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render
+#from django.http import HttpResponse
+#from django.template import RequestContext
 
 
 def index(request):
-    #response = HttpResponse("An app")
-    return HttpResponse("an app <a href='/rango/about/'>About page</a>")
+    context_dict = {"boldmessage": "Welcome to space and time. Event horizon"}
+    return render(request,'home.html', context_dict)
     
 def about_page(request):
-    return HttpResponse("Here is about page <a href='/rango/'>Home page</a>")
+    return render(request, 'about.html')
