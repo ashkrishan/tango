@@ -9,15 +9,16 @@
     <body>
         <div class="container" >
         
-            {% if categories %}            
-             <h1>Top {{ categories|length }} categories</h1>  
-                {% for category in categories %}
-                {{ forloop.counter }}: <a href="/rango/category/{{ category.url }}/">{{ category.name }}</a><br />
+            {% if category %}            
+             <h1>{{ category_name }}:</h1>  
+                {% if pages %}
+                    {% for page in pages %}
+                        {{ forloop.counter }}: <a href={{ page.url }}>{{ page.title }}</a><br />
                 {% endfor %}
             {% else %}
-                <strong>Category doesn't exist</strong>
-            {% endif %}            
-        
+                <strong>Category {{ category_name }} doesn't exist</strong>
+                {% endif %}            
+            {% endif %}
         <a href="/rango/about/">About</a><br />
         </div>
     </body>
