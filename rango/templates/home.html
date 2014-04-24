@@ -12,13 +12,23 @@
             {% if categories %}            
              <h1>Top {{ categories|length }} categories</h1>  
                 {% for category in categories %}
-                {{ forloop.counter }}: <a href="/rango/category/{{ category.url }}/">{{ category.name }}</a><br />
+                <strong>{{ category.url }}</strong>
+                {{ forloop.counter }}: <a href="/rango/category/{{ category.name|urlencode }}/">{{ category.name }}</a><br />
                 {% endfor %}
             {% else %}
-                <strong>Category doesn't exist</strong>
-            {% endif %}            
-        
+                <strong>Category doesn't exist</strong><br />
+            {% endif %}
+            {% if pages %}
+                <h1>Top {{ pages|length }} urls:</h1><br />
+                {% for page in pages %}
+                    <a href="{{ page.url }}">{{ page.title }}</a><br />
+                {% endfor %}
+            {% else %}
+                <strong>{{ page.title }} don't exist</strong>
+            {% endif %}    
+                
         <a href="/rango/about/">About</a><br />
+        <a href="/rango/category/add_category/">Add New Category</a>
         </div>
     </body>
 </html>
