@@ -8,7 +8,12 @@
     </head>
     <body>
         <div class="container" >
-        
+            {% if user.is_authenticated %}
+                <h4>Welcome {{ user.username }}</h4>
+            {% else %}
+                <h4>To add pages you require to be logged in </h4>
+            {% endif %}    
+            <a href="/rango/login/"><Strong>Login</Strong></a><br />
             {% if categories %}            
              <h1>Top {{ categories|length }} categories</h1>  
                 {% for category in categories %}
@@ -26,7 +31,8 @@
             {% else %}
                 <strong>{{ page.title }} don't exist</strong>
             {% endif %}    
-                
+        
+        <a href="/rango/register/">Register</a><br /><br />      
         <a href="/rango/about/">About</a><br />
         <a href="/rango/category/add_category/">Add New Category</a>
         </div>

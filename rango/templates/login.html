@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">    
+    <head>
+        <title>Rango is Django</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="/static/base.css" rel="stylesheet" media="screen">
+    </head>
+    <body>
+        <div class="container" >
+            <h3>Login here:</h3>
+                       
+            <form id="login_form"  method="post" action="/rango/login/">
+            {% csrf_token %}
+            <input type="text" name="username" value="" size="50" />
+            <input type="password" name="password" value="" size="50" />
+            
+            <input type="submit" name="submit" value="Login"/>    
+            
+            
+            </form>            
+            
+        </div>
+    </body>
+</html>
